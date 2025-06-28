@@ -55,10 +55,10 @@ CREATE TABLE Suppliers (
     ContactTitle 			VARCHAR(200),
     Address 				VARCHAR(200),
     City 			        VARCHAR(100),
-    Region 				VARCHAR(50),
+    Region 				    VARCHAR(50),
     PostalCode 				VARCHAR(15),
     Country 				VARCHAR(50),
-    Phone 				VARCHAR(12),
+    Phone 				    VARCHAR(12),
     Website		    		VARCHAR(25)
  );
 
@@ -119,16 +119,16 @@ CREATE TABLE Employees (
     EmployeeID				INT PRIMARY KEY AUTO_INCREMENT,
     LastName				VARCHAR(100),
     FirstName				VARCHAR(100),
-    Title				VARCHAR(150),
+    Title				    VARCHAR(150),
     TitleOfCourtesy			VARCHAR(100),
     BirthDate				DATE,
     HireDate				DATE,
-    Address				VARCHAR(250),
-    City				VARCHAR(100),
-    Region				VARCHAR(100),
+    Address				    VARCHAR(250),
+    City				    VARCHAR(100),
+    Region				    VARCHAR(100),
     PostalCode				VARCHAR(10),
-    Country				VARCHAR(100),
-    Phone				VARCHAR(12)
+    Country				    VARCHAR(100),
+    Phone				    VARCHAR(12)
 );    
 
 -- =========================================
@@ -144,7 +144,7 @@ CREATE TABLE EmployeeTerritories (
 );
 
 -- =========================================
--- ****** Customoers Table *****************
+-- ****** Customers Table ******************
 -- =========================================
 
 CREATE TABLE Customers (
@@ -152,13 +152,13 @@ CREATE TABLE Customers (
     CompanyName				VARCHAR(200) NOT NULL,
     ContactName				VARCHAR(200),
     ContactTitle			VARCHAR(20),
-    Address				VARCHAR(200),
-    City				VARCHAR(200),
-    Region				VARCHAR(100),
+    Address				    VARCHAR(200),
+    City				    VARCHAR(200),
+    Region				    VARCHAR(100),
     PostalCode				VARCHAR(10),
-    Country				VARCHAR(20),
-    Phone				VARCHAR(12),
-    Email				VARCHAR(50)
+    Country				    VARCHAR(20),
+    Phone				    VARCHAR(12),
+    Email				    VARCHAR(50)
 );
 
 -- ==========================================
@@ -189,7 +189,7 @@ CREATE TABLE CustomerDemo (
 CREATE TABLE Shippers (
     ShipperID				INT PRIMARY KEY AUTO_INCREMENT,
     CompanyName				VARCHAR(200),
-    Phone				VARCHAR(12)
+    Phone				    VARCHAR(12)
 );
 
   -- ========================================
@@ -197,14 +197,14 @@ CREATE TABLE Shippers (
 -- ==========================================
 
 CREATE TABLE Orders (
-    OrderID				INT PRIMARY KEY AUTO_INCREMENT,
+    OrderID				    INT PRIMARY KEY AUTO_INCREMENT,
     CustomerID				INT,
     EmployeeID				INT,
     ShipperID				INT,
     OrderDate				DATE,
     RequiredDate			DATE,
     ShippedDate				DATE,
-    Freight				DECIMAL(10, 2),			
+    Freight				    DECIMAL(10, 2),			
     ShipName				VARCHAR(100),
     ShipAddress				VARCHAR(250),
     ShipCity				VARCHAR(100),
@@ -221,12 +221,12 @@ CREATE TABLE Orders (
 -- ==========================================
 
 CREATE TABLE OrderDetails (
-    OrderID				INT,
+    OrderID				    INT,
     ProductID				INT,
     UnitPrice				DECIMAL(10 ,2),
-    OrdQty				INT,
+    OrdQty				    INT,
     Discount				DECIMAL(10,2),
-    PRIMARY KEY (OrderID, ProductID),
+    PRIMARY KEY (OrderID,   ProductID),
     FOREIGN KEY (OrderID) REFERENCES Orders (OrderID),
     FOREIGN KEY (ProductID) REFERENCES Products (ProductID)
 );
