@@ -53,12 +53,12 @@ CREATE TABLE Suppliers (
     CompanyName 			VARCHAR(50) NOT NULL,
     ContactName 			VARCHAR(250),
     ContactTitle 			VARCHAR(200),
-	Address 				VARCHAR(200),
-    City 					VARCHAR(100),
-    Region 					VARCHAR(50),
+    Address 				VARCHAR(200),
+    City 			        VARCHAR(100),
+    Region 				VARCHAR(50),
     PostalCode 				VARCHAR(15),
     Country 				VARCHAR(50),
-    Phone 					VARCHAR(12),
+    Phone 				VARCHAR(12),
     Website		    		VARCHAR(25)
  );
 
@@ -67,7 +67,7 @@ CREATE TABLE Suppliers (
 -- ==========================================
 
 CREATE TABLE Categories (
-	CategoryID 				INT PRIMARY KEY AUTO_INCREMENT,
+    CategoryID 				INT PRIMARY KEY AUTO_INCREMENT,
     CategoryName			VARCHAR(50),
     Description				VARCHAR(250)
 );
@@ -77,7 +77,7 @@ CREATE TABLE Categories (
 -- ==========================================
 
 CREATE TABLE Products (
-	ProductID				INT PRIMARY KEY AUTO_INCREMENT,
+    ProductID				INT PRIMARY KEY AUTO_INCREMENT,
     SupplierID				INT,
     CategoryID				INT,
     ProductName				VARCHAR(25) NOT NULL,
@@ -96,8 +96,8 @@ CREATE TABLE Products (
 -- ==========================================
 
 CREATE TABLE Region (
-	RegionID				INT PRIMARY KEY AUTO_INCREMENT,
-    RegionDescription		VARCHAR(100)
+    RegionID				INT PRIMARY KEY AUTO_INCREMENT,
+    RegionDescription			VARCHAR(100)
 );
 
 -- ==========================================
@@ -105,7 +105,7 @@ CREATE TABLE Region (
 -- ==========================================
 
 CREATE TABLE Territories (
-	TerritoryID				INT PRIMARY KEY AUTO_INCREMENT,
+    TerritoryID				INT PRIMARY KEY AUTO_INCREMENT,
     RegionID				INT,
     TerritoryDesc			VARCHAR(200),
     FOREIGN KEY (RegionID) REFERENCES Region (RegionID)
@@ -116,19 +116,19 @@ CREATE TABLE Territories (
 -- ==========================================
 
 CREATE TABLE Employees (
-	EmployeeID				INT PRIMARY KEY AUTO_INCREMENT,
+    EmployeeID				INT PRIMARY KEY AUTO_INCREMENT,
     LastName				VARCHAR(100),
     FirstName				VARCHAR(100),
-    Title					VARCHAR(150),
+    Title				VARCHAR(150),
     TitleOfCourtesy			VARCHAR(100),
     BirthDate				DATE,
     HireDate				DATE,
-    Address					VARCHAR(250),
-    City					VARCHAR(100),
-    Region					VARCHAR(100),
+    Address				VARCHAR(250),
+    City				VARCHAR(100),
+    Region				VARCHAR(100),
     PostalCode				VARCHAR(10),
-    Country					VARCHAR(100),
-    Phone					VARCHAR(12)
+    Country				VARCHAR(100),
+    Phone				VARCHAR(12)
 );    
 
 -- =========================================
@@ -136,10 +136,10 @@ CREATE TABLE Employees (
 -- =========================================
 
 CREATE TABLE EmployeeTerritories (
-	EmployeeID				INT,
+    EmployeeID				INT,
     TerritoryID				INT,
-	PRIMARY KEY (EmployeeID, TerritoryID),
-	FOREIGN KEY (EmployeeID) REFERENCES Employees (EmployeeID),
+    PRIMARY KEY (EmployeeID, TerritoryID),
+    FOREIGN KEY (EmployeeID) REFERENCES Employees (EmployeeID),
     FOREIGN KEY (TerritoryID) REFERENCES Territories (TerritoryID)
 );
 
@@ -148,17 +148,17 @@ CREATE TABLE EmployeeTerritories (
 -- =========================================
 
 CREATE TABLE Customers (
-	CustomerID				INT PRIMARY KEY AUTO_INCREMENT,
+    CustomerID				INT PRIMARY KEY AUTO_INCREMENT,
     CompanyName				VARCHAR(200) NOT NULL,
     ContactName				VARCHAR(200),
     ContactTitle			VARCHAR(20),
-    Address					VARCHAR(200),
-    City					VARCHAR(200),
-    Region					VARCHAR(100),
+    Address				VARCHAR(200),
+    City				VARCHAR(200),
+    Region				VARCHAR(100),
     PostalCode				VARCHAR(10),
-    Country					VARCHAR(20),
-    Phone					VARCHAR(12),
-    Email					VARCHAR(50)
+    Country				VARCHAR(20),
+    Phone				VARCHAR(12),
+    Email				VARCHAR(50)
 );
 
 -- ==========================================
@@ -166,7 +166,7 @@ CREATE TABLE Customers (
 -- ==========================================
 
  CREATE TABLE CustomerDemographics (
-	CustomerTypeID			INT PRIMARY KEY AUTO_INCREMENT,
+    CustomerTypeID			INT PRIMARY KEY AUTO_INCREMENT,
     CustomerDesc			VARCHAR(100)
 );
 
@@ -175,7 +175,7 @@ CREATE TABLE Customers (
 -- ==========================================
 
 CREATE TABLE CustomerDemo (
-	CustomerID				INT,
+    CustomerID				INT,
     CustomerTypeID			INT,
     PRIMARY KEY (CustomerID, CustomerTypeID),
     FOREIGN KEY (CustomerID) REFERENCES Customers (CustomerID),
@@ -187,9 +187,9 @@ CREATE TABLE CustomerDemo (
 -- ==========================================
 
 CREATE TABLE Shippers (
-	ShipperID				INT PRIMARY KEY AUTO_INCREMENT,
+    ShipperID				INT PRIMARY KEY AUTO_INCREMENT,
     CompanyName				VARCHAR(200),
-    Phone					VARCHAR(12)
+    Phone				VARCHAR(12)
 );
 
   -- ========================================
@@ -197,21 +197,21 @@ CREATE TABLE Shippers (
 -- ==========================================
 
 CREATE TABLE Orders (
-	OrderID					INT PRIMARY KEY AUTO_INCREMENT,
+    OrderID				INT PRIMARY KEY AUTO_INCREMENT,
     CustomerID				INT,
     EmployeeID				INT,
     ShipperID				INT,
     OrderDate				DATE,
     RequiredDate			DATE,
     ShippedDate				DATE,
-    Freight					DECIMAL(10, 2),			
+    Freight				DECIMAL(10, 2),			
     ShipName				VARCHAR(100),
     ShipAddress				VARCHAR(250),
     ShipCity				VARCHAR(100),
     ShipRegion				VARCHAR(20),
     ShipPostCode			VARCHAR(10),
     ShipCountry				VARCHAR(20),
-	FOREIGN KEY (CustomerID) REFERENCES Customers (CustomerID),
+    FOREIGN KEY (CustomerID) REFERENCES Customers (CustomerID),
     FOREIGN KEY (EmployeeID) REFERENCES Employees (EmployeeID),
     FOREIGN KEY (ShipperID)  REFERENCES Shippers (ShipperID)
 );
@@ -221,10 +221,10 @@ CREATE TABLE Orders (
 -- ==========================================
 
 CREATE TABLE OrderDetails (
-	OrderID					INT,
+    OrderID				INT,
     ProductID				INT,
     UnitPrice				DECIMAL(10 ,2),
-    OrdQty					INT,
+    OrdQty				INT,
     Discount				DECIMAL(10,2),
     PRIMARY KEY (OrderID, ProductID),
     FOREIGN KEY (OrderID) REFERENCES Orders (OrderID),
